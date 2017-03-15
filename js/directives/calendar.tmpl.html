@@ -1,0 +1,54 @@
+<div class='row'>
+	<div class='col-md-2'>
+		<h2>User Name:</h2>
+		<div class='userNames'>
+					<div class="names" ng-repeat="user in userList" ng-click="swichUser($index)">{{user.name}}</div>
+					<h2>Selected User:</h2>
+					<div>{{curUser}}</div>
+		</div>
+		
+	</div>
+	<div class='col-md-10'>
+		<div class="calendar" ui-calendar="uiConfig.calendar" calendar="myCalendar" ng-model="eventSources"></div>
+	</div>
+	<div class='col-lg-3 col-md-6'>
+		<h2 class='tableName'>Task busy hours:</h2>
+		<table class="table table-bordered">
+  		<thead>
+  			<tr>
+  				<th>Names</th>
+  				<th>Hours</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="user in userArr | orderBy : '-task_hour'">
+  				<th>{{user.name}}</th>
+  				<th>{{user.task_hour}}</th>
+  			</tr>
+  		</tbody>
+		</table>
+	</div>
+	<div class='col-lg-3 col-md-6'>
+		<h2 class='tableName'>Meeting busy hours:</h2>
+		<table class="table table-bordered">
+  		<thead>
+  			<tr>
+  				<th>Names</th>
+  				<th>Hours</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="user in userArr | orderBy : '-meeting_hour'">
+  				<th>{{user.name}}</th>
+  				<th>{{user.meeting_hour}}</th>
+  			</tr>
+  		</tbody>
+		</table>
+	</div>
+	<div class='col-lg-3 col-md-6'>
+		<h2>Users who available to take repeating tasks:</h2>
+		<h3>( From 3/6 to 3/10 in morning hours (8AM-12PM), each day dedicating 1 hour. )</h3>
+		<div ng-repeat='user in availableUserArr'>{{user.name}}</div>
+	</div>
+	
+</div>
